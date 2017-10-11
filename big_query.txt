@@ -1,0 +1,9 @@
+SELECT a.calftag, a.x, a.y, a.recorddate, b.calftag, b.x, b.y, b.recorddate
+FROM rawrtls a, rawrtls b
+WHERE a.calftag < b.calftag
+AND ((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)) <= 1.09
+and a.ts between 1462689200 and 1462689230
+and a.ts = b.ts
+limit 20;
+#and retrieve only one second
+#group by calftag
